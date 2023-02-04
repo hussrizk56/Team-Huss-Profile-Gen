@@ -87,4 +87,74 @@ function createOutPut() {
                 console.log(err);
               });
     }
-    
+//add Engineer function
+const createEngineer = function () {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "What is the name of this engineer?",
+                name: "engineerName"
+            },
+            {
+                type: "input",
+                message: "What is the id # for this engineer?",
+                name: "engineerId"
+            },
+            {
+                type: "input",
+                message: "What is the engineer's email?",
+                name: "engineerEmail"
+            },
+            {
+                type: "input",
+                message: "What is the engineer's GitHub user name?",
+                name: "engineerGitHub"
+            },
+        ])
+        .then(answers => {
+            const engineer = new Engineer(answers.engineerName, answers.engineerId, answers.engineerEmail, answers.engineerGitHub);
+            createdTeam.push(engineer)
+            createTeam();
+        })
+}
+//add Intern function
+const createIntern = function () {
+    inquirer
+        .prompt([
+            {
+                type: "input",
+                message: "What is the name of this intern?",
+                name: "internName"
+            },
+            {
+                type: "input",
+                message: "What is the id # for this intern?",
+                name: "internId"
+            },
+            {
+                type: "input",
+                message: "What is the intern's email?",
+                name: "internEmail"
+            },
+            {
+                type: "input",
+                message: "What school is the intern attending?",
+                name: "internSchool"
+            },
+        ])
+        .then(answers => {
+            const intern = new Intern(answers.internName, answers.internId, answers.internEmail, answers.internSchool);
+            createdTeam.push(intern)
+            createTeam();
+        })
+}
+//build Team function
+const renderHtml = function () {
+    if (!fs.existsSync(OUTPUT_DIR)) { fs.mkdirSync(OUTPUT_DIR) }
+    fs.writeFileSync(outputPath, render(createdTeam))
+};
+
+createManager();
+}
+createOutPut(); 
