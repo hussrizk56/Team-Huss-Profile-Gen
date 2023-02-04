@@ -43,4 +43,48 @@ function createOutPut() {
                 createTeam();
             })
     }
+
+    //create team function
+    const createTeam = function () {
+        inquirer
+            .prompt([
+                {
+                    type: "list",
+                    message: "Would you like to add more team members?",
+                    name: "moreMembers",
+                    choices: ["Yes", "No"]
+                },
+            ])
+            .then(answers => {
+           if (answers.moreMembers == "Yes"){
+               selectEmployee();
+           }else{
+               renderHtml();
+           }
+            })
+    }
+    const selectEmployee = function () {
+        inquirer
+            .prompt([
+                {
+                    type: "list",
+                    message: "Please select an employee type below:",
+                    choices: ["Engineer", "Intern"],
+                    name: "employeeType"
+                },
+            ])
+            .then(answers => {
+                switch (answers.employeeType) {
+                    case "Engineer":
+                        createEngineer();
+                        break;
+                    case "Intern":
+                        createIntern();
+                        break; 
+                }
+            })
+            .catch(function(err) {
+                console.log(err);
+              });
+    }
     
