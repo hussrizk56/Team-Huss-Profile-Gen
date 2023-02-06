@@ -25,7 +25,8 @@ For this week's assignment I create a Node.js command-line application that take
 
 ## Links 
 Video Link: https://drive.google.com/file/d/1j4S-N0FcE_foe73TIrKTSRVoHQzSB2XM/view
-GitHub Link: 
+GitHub Link: https://github.com/hussrizk56/Team-Huss-Profile-Gen
+
 
 
 
